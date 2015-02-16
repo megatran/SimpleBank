@@ -29,7 +29,21 @@ public class SimpleBank {
 		System.out.println("Thanks for using the system.");
 	}
 	
+	private double withdraw(int accNum, double amount) {
+		BankAccount acc = find(accNum);
+		acc.withdraw(amount);
+		return acc.getBalance();
+	}
 	
+	private int extractAccountNumber(String params) {
+		return Integer.parseInt(params.substring(params.indexOf(' ')+1).trim());
+	}
+	
+	private double deposit(int accountNumber, double amount) {
+		BankAccount acc = find(accountNumber);
+		acc.deposit(amount);
+		return acc.getBalance();
+	}
 	
 	
 	private int openNewAccount(String commandStr) {
@@ -38,6 +52,15 @@ public class SimpleBank {
 		storeAccount (bankAccount);
 		return bankAccount.getAccountNumber();
 		
+	}
+	
+	private BankAccount find(int accNum) {
+		for (int i=0; i < accounts.length; i++) {
+			if (accounts[i] != null && accNum == accounts[i].getAccountNumber()) {
+				return accounts[i];
+			}
+		}
+		return null;
 	}
 	
 	public void storeAccount(BankAccount acc) {
