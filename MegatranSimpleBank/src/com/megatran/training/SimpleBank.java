@@ -20,10 +20,42 @@ public class SimpleBank {
 			if (commandStr.trim().equalsIgnoreCase("help")) {
 				bank.printHelpMenu();
 			}
+			
+			if (commandStr.trim().startsWith("open")) {
+				int accNum = bank.openNewAccount(commandStr);
+			}
+			
 		} while(true);
 		System.out.println("Thanks for using the system.");
 	}
 	
+	
+	
+	
+	private int openNewAccount(String commandStr) {
+		double initialDepositAmount = Double.parseDouble(commandStr.substring(5));
+		BankAccount bankAccount = new BankAccount (generateAccountNumber(), initialDepositAmount);
+		storeAccount (bankAccount);
+		return bankAccount.getAccountNumber();
+		
+	}
+	
+	public void storeAccount(BankAccount acc) {
+		int i = 0;
+		//search for empty slot
+		while (i < accounts.length && accounts[i] != null) {
+			i++;
+		}
+		if (i == accounts.length-1) {
+			System.out.println("Storage is full...");
+			return;
+		}
+		accounts[i] = acc;
+	}
+	private static int generateAccountNumber() {
+		return ACC_NUM_GENERATOR++;
+	}
+
 	private void printPrompt() {
 		System.out.print(">");
 	}
