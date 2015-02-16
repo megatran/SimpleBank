@@ -1,13 +1,18 @@
 package com.megatran.training;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class SimpleBank {
 	
 	private static int ACC_NUM_GENERATOR = 10001;
 	// array of bank account of size 10 -> you can only open upto 10 accounts
-	private static BankAccount[] accounts = new BankAccount[10]; 
+	//private static BankAccount[] accounts = new BankAccount[10]; 
 	
+	//change to Map
+	
+	private static Map<Integer, BankAccount> accounts = new HashMap<Integer, BankAccount>();
 	public static void main (String[] args) {
 		SimpleBank bank = new SimpleBank();
 		bank.printWelcomeMsg();
@@ -79,16 +84,20 @@ public class SimpleBank {
 		
 	}
 	
-	private BankAccount find(int accNum) {
+	/* private BankAccount find(int accNum) {
 		for (int i=0; i < accounts.length; i++) {
 			if (accounts[i] != null && accNum == accounts[i].getAccountNumber()) {
 				return accounts[i];
 			}
 		}
 		return null;
+	} */
+	
+	private BankAccount find(int accNum) {
+		return accounts.get(accNum);
 	}
 	
-	public void storeAccount(BankAccount acc) {
+	/* public void storeAccount(BankAccount acc) {
 		int i = 0;
 		//search for empty slot
 		while (i < accounts.length && accounts[i] != null) {
@@ -99,6 +108,13 @@ public class SimpleBank {
 			return;
 		}
 		accounts[i] = acc;
+	} */
+	
+	//change to Map
+	public void storeAccount(BankAccount acc) {
+		if (!accounts.containsKey(acc.getAccountNumber())) {
+			accounts.put(acc.getAccountNumber(), acc);
+		}
 	}
 	private static int generateAccountNumber() {
 		return ACC_NUM_GENERATOR++;
