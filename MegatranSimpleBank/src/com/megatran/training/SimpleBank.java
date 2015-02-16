@@ -3,6 +3,11 @@ package com.megatran.training;
 import java.util.Scanner;
 
 public class SimpleBank {
+	
+	private static int ACC_NUM_GENERATOR = 10001;
+	// array of bank account of size 10 -> you can only open upto 10 accounts
+	private static BankAccount[] accounts = new BankAccount[10]; 
+	
 	public static void main (String[] args) {
 		SimpleBank bank = new SimpleBank();
 		bank.printWelcomeMsg();
