@@ -12,6 +12,7 @@ public class SimpleBank {
 		SimpleBank bank = new SimpleBank();
 		bank.printWelcomeMsg();
 		Scanner scanner = new Scanner (System.in);
+		
 		do {
 			bank.printPrompt();
 			String commandStr = scanner.nextLine();
@@ -106,7 +107,7 @@ public class SimpleBank {
 	private void printPrompt() {
 		System.out.print(">");
 	}
-	
+
 	private void printWelcomeMsg() {
 		System.out.println("Welcome to Megatran Banking...");
 		printHelpMenu();
