@@ -26,6 +26,14 @@ public class SimpleBank {
 				System.out.println("\tAccount opened with number: " + accNum);
 				System.out.println("\nPlease note the account number for later use.");
 			}
+			if (commandStr.trim().startsWith("deposit")) {
+				String params = commandStr.substring(8);
+				int accNum = bank.extractAccountNumber(params);
+				double amount = bank.extractAccountNumber(params);
+				double balance = bank.deposit(accNum, amount);
+				System.out.println("\tDeposited " + amount + " in account number " + accNum);
+				System.out.println("\tCurrent balance in the account is $" + balance);
+			}
 			
 		} while(true);
 		System.out.println("Thanks for using the system.");
