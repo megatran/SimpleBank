@@ -35,6 +35,15 @@ public class SimpleBank {
 				System.out.println("\tCurrent balance in the account is $" + balance);
 			}
 			
+			if (commandStr.trim().startsWith("withdraw")) {
+				String params = commandStr.substring(9);
+				int accNum = bank.extractAccountNumber(params);
+				double amount = bank.extractAccountNumber(params);
+				double balance = bank.withdraw(accNum, amount);
+				System.out.println("\tDispensed " + amount + " from account number " + accNum);
+				System.out.println("\tCurrent balance in the account is $" + balance);
+			}
+			
 		} while(true);
 		System.out.println("Thanks for using the system.");
 	}
