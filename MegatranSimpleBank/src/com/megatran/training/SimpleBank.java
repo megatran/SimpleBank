@@ -23,6 +23,8 @@ public class SimpleBank {
 			
 			if (commandStr.trim().startsWith("open")) {
 				int accNum = bank.openNewAccount(commandStr);
+				System.out.println("\tAccount opened with number: " + accNum);
+				System.out.println("\nPlease note the account number for later use.");
 			}
 			
 		} while(true);
