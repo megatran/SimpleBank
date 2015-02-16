@@ -43,6 +43,11 @@ public class SimpleBank {
 				System.out.println("\tDispensed " + amount + " from account number " + accNum);
 				System.out.println("\tCurrent balance in the account is $" + balance);
 			}
+			if (commandStr.trim().startsWith("balance")) {
+				int accNum = Integer.parseInt(commandStr.substring(8));
+				BankAccount acc = bank.find(accNum);
+				System.out.println("\tAccount Number: " + accNum + " currently has $" + acc.getBalance());
+			}
 			
 		} while(true);
 		System.out.println("Thanks for using the system.");
